@@ -1,0 +1,42 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "Padam Rekod Pekerja";
+}
+
+<h2>@ViewData["Title"] @Html.DisplayFor(m => m.Name) </h2>
+<hr />
+
+<form asp-action="Delete">
+    <input hidden asp-for="Id" />
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" type="text" readonly />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="PhoneNo" class="form-label"></label>
+        <input asp-for="PhoneNo" class="form-control" type="text" readonly />
+        <span asp-validation-for="PhoneNo" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" type="email" readonly />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Address" class="form-label"></label>
+        <textarea asp-for="Address" class="form-control" cols="30" rows="3" readonly></textarea>
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="DepartmentID" class="form-label"></label>
+        <select asp-for="DepartmentID" class="form-control" asp-items="ViewBag.Departments" disabled>
+            <option>-- Sila Pilih Jabatan --</option>
+        </select>
+        <span asp-validation-for="DepartmentID" class="text-danger"></span>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-danger btn-sm">Padam Rekod</button>
+        <a asp-action="Index" class="btn btn-warning btn-sm">Kembali Ke Senarai Pekerja</a>
+    </div>
+</form>

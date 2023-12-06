@@ -1,0 +1,48 @@
+﻿@model IEnumerable<TrainingLZS.Models.Employee>
+
+@{
+    ViewData["Title"] = "Senarai Pekerja";
+}
+
+<h2>@ViewData["Title"]</h2>
+<p>
+    <a asp-action="Create" asp-controller="Employee" class="btn btn-primary btn-sm"> Tambah Rekod Pekerja Baru</a>
+</p>
+
+<table class="table table-bordered table-responsive">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Phone No.</th>
+            <th>Department</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            @foreach(var employee in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(model => employee.Name)</td>
+                    <td>@Html.DisplayFor(model => employee.PhoneNo)</td>
+                    <td>@Html.DisplayFor(model => employee.Departments.Name)</td>
+                    <td>
+                        <a asp-action="Detail" asp-route-id="@employee.Id" class="btn btn-success btn-sm">Lihat Profil Penuh</a>
+                        <a asp-action="Edit" asp-route-id="@employee.Id" class="btn btn-warning btn-sm">Kemaskini</a>
+                        <a asp-action="Delete" asp-route-id="@employee.Id" class="btn btn-danger btn-sm">Padam</a>
+
+                    </td>
+                </tr>
+            }
+               
+        }
+        else
+        {
+            <tr>
+                <td colspan="4">Tiada Rekod Pekerja</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
